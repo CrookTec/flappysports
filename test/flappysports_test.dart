@@ -8,7 +8,7 @@ import 'package:flappysports/flappysports.dart';
 
 void main() {
   test('Get Events', () async {
-    ApiConnection api = ApiConnection();
+    ApiConnection api = ApiConnection('localhost:5000','api/v1/');
     List<Event> events = await api.getEvents(2023);
     for (Event event in events) {
       print(event.name);

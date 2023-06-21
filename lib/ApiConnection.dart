@@ -10,10 +10,13 @@ class ApiConnection {
   String baseUrl = 'localhost:5000';
   String postfix = 'api/v1/';
 
+  ApiConnection(this.baseUrl,this.postfix);
+
   Future<List<Event>> getEvents(int year) async {
     final response = await get(
-        // Uri.https(baseUrl, postfix + 'events/' + year.toString()));
-        Uri.http(baseUrl, postfix + 'events'));
+        Uri.http(baseUrl, postfix + 'events/' + year.toString()));
+        // Uri.http(baseUrl, postfix + 'events'));
+    //print(response.body);
     if (response.statusCode == 200) {
       List<Event> events = (jsonDecode(response.body) as List)
           .map((e) => Event.fromJson(e))
