@@ -7,15 +7,22 @@ import 'package:flappysports/School.dart';
 import 'package:flappysports/flappysports.dart';
 
 void main() {
-  test('Get Events', () async {
-    ApiConnection api = ApiConnection('localhost:5000','api/v1/');
-    List<Event> events = await api.getEvents(2023);
-    for (Event event in events) {
-      print(event.name);
-      for (School school in event.schools!) {
-        print(school.name);
-      }
-      
+  // test('Get Events', () async {
+  //   ApiConnection api = ApiConnection('localhost:5000', 'api/v1/');
+  //   List<Event> events = await api.getEvents(2023);
+  //   for (Event event in events) {
+  //     print(event.name);
+  //     for (School school in event.schools!) {
+  //       print(school.name);
+  //     }
+  //   }
+  // });
+
+  test('Get Schools', () async {
+    ApiConnection api = ApiConnection('localhost:5000', 'api/v1/');
+    List<School> schools = await api.getSchools();
+    for (School school in schools) {
+      print(school.name);
     }
   });
 }

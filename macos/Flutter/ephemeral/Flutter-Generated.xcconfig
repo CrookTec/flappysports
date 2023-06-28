@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Users/tannercrook/Development/flutter
-FLUTTER_APPLICATION_PATH=/Users/tannercrook/Development/CrookTec/SVI/sports-app/svisports/flappysports
+FLUTTER_ROOT=C:\src\flutter
+FLUTTER_APPLICATION_PATH=C:\Users\camer\Documents\Work\Crooktec\flappysports
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=0.0.1
