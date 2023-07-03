@@ -6,6 +6,7 @@ class School {
   String abbreviation;
   String mascot;
   int activeFlag;
+  int partnerFlag;
 
   School({
     this.schoolId=0,
@@ -13,6 +14,7 @@ class School {
     this.abbreviation='None',
     this.mascot='None',
     this.activeFlag=0,
+    this.partnerFlag=0
   });
 
   factory School.fromMap(Map<String, dynamic> map) {
@@ -22,6 +24,7 @@ class School {
       abbreviation: map['abbreviation'],
       mascot: map['mascot'],
       activeFlag: map['active_flag'],
+      partnerFlag: map['partner_flag'],
     );
   }
 
@@ -32,6 +35,7 @@ class School {
       abbreviation: json['abbreviation'],
       mascot: json['mascot'],
       activeFlag: json['active_flag'],
+      partnerFlag: json['partner_flag'] ?? 0,
     );
   }
 }

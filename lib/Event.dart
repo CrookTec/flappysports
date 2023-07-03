@@ -45,19 +45,17 @@ class Event {
 
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
-      eventId: json['item']['event']['event_id'],
-      name: json['item']['event']['name'],
-      sportId: json['item']['event']['sport_id'],
-      yearId: json['item']['event']['year_id'],
-      hostingSchoolId: json['item']['event']['hosting_school_id'],
-      conferenceId: json['item']['event']['conference_id'],
+      eventId: json['item']['event']['event_id'] ?? 0,
+      name: json['item']['event']['name'] ?? '',
+      sportId: json['item']['event']['sport_id'] ?? 0,
+      yearId: json['item']['event']['year_id'] ?? 0,
+      hostingSchoolId: json['item']['event']['hosting_school_id'] ?? 0,
+      conferenceId: json['item']['event']['conference_id'] ?? 0,
       startTimestamp: DateTime.parse(json['item']['event']['start_timestamp']),
       endTimestamp: json['item']['event']['end_timestamp'] != null
           ? DateTime.parse(json['item']['event']['end_timestamp'])
           : null,
-      schools: json['item']['schools']
-          .map<School>((e) => School.fromMap(e))
-          .toList()
+      schools: json['item']['schools'].map<School>((e) => School.fromMap(e)).toList() as List<School>
     );
   }
 }
