@@ -15,7 +15,7 @@ class ApiConnection {
 
   Future<List<Event>> getEvents(int year) async {
     final response =
-        await get(Uri.http(baseUrl, postfix + 'events/' + year.toString()));
+        await get(Uri.https(baseUrl, postfix + 'events/' + year.toString()));
     // Uri.http(baseUrl, postfix + 'events'));
     //print(response.body);
     if (response.statusCode == 200) {
@@ -28,7 +28,7 @@ class ApiConnection {
   }
 
   Future<List<Event>> getSchoolEvents(int year, String school) async {
-    final response = await get(Uri.http(
+    final response = await get(Uri.https(
         baseUrl, postfix + 'events/' + year.toString() + '/school/' + school));
     if (response.statusCode == 200) {
       List<Event> events = (jsonDecode(response.body) as List)
@@ -40,7 +40,7 @@ class ApiConnection {
   }
 
   Future<List<School>> getSchools() async {
-    final response = await get(Uri.http(baseUrl, postfix + 'schools'));
+    final response = await get(Uri.https(baseUrl, postfix + 'schools'));
     if (response.statusCode == 200) {
       List<School> schools = (jsonDecode(response.body) as List)
           .map((e) => School.fromJson(e))
