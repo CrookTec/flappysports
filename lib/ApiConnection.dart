@@ -5,8 +5,6 @@ import 'package:http/http.dart';
 import 'dart:io';
 import 'dart:convert';
 
-import 'Event.dart';
-
 class ApiConnection {
   String baseUrl = 'localhost:5000';
   String postfix = 'api/v1/';
@@ -46,6 +44,17 @@ class ApiConnection {
           .map((e) => School.fromJson(e))
           .toList();
       return schools;
+    }
+    throw ClientException('Server Error');
+  }
+
+  Future<List<Conference>> getConferences() async {
+    final response = await get(Uri.https(baseUrl, postfix + 'conferences'));
+    if (response.statusCode == 200) {
+      List<Conference> conferences = (jsonDecode(response.body) as List)
+          .map((e) => Conference.fromJson(e))
+          .toList();
+      return conferences;
     }
     throw ClientException('Server Error');
   }

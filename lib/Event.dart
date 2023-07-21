@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flappysports/flappysports.dart';
 
-
 import 'School.dart';
 
 class Event {
@@ -16,7 +15,6 @@ class Event {
   DateTime? startTimestamp;
   DateTime? endTimestamp;
   List<School>? schools;
-
 
   Event({
     this.eventId = 0,
@@ -45,18 +43,19 @@ class Event {
 
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
-      eventId: json['item']['event']['event_id'] ?? 0,
-      name: json['item']['event']['name'] ?? '',
-      sportId: json['item']['event']['sport_id'] ?? 0,
-      yearId: json['item']['event']['year_id'] ?? 0,
-      hostingSchoolId: json['item']['event']['hosting_school_id'] ?? 0,
-      conferenceId: json['item']['event']['conference_id'] ?? 0,
-      startTimestamp: DateTime.parse(json['item']['event']['start_timestamp']),
-      endTimestamp: json['item']['event']['end_timestamp'] != null
-          ? DateTime.parse(json['item']['event']['end_timestamp'])
-          : null,
-      schools: json['item']['schools'].map<School>((e) => School.fromMap(e)).toList() as List<School>
-    );
+        eventId: json['item']['event']['event_id'] ?? 0,
+        name: json['item']['event']['name'] ?? '',
+        sportId: json['item']['event']['sport_id'] ?? 0,
+        yearId: json['item']['event']['year_id'] ?? 0,
+        hostingSchoolId: json['item']['event']['hosting_school_id'] ?? 0,
+        conferenceId: json['item']['event']['conference_id'] ?? 0,
+        startTimestamp:
+            DateTime.parse(json['item']['event']['start_timestamp']),
+        endTimestamp: json['item']['event']['end_timestamp'] != null
+            ? DateTime.parse(json['item']['event']['end_timestamp'])
+            : null,
+        schools: json['item']['schools']
+            .map<School>((e) => School.fromMap(e))
+            .toList() as List<School>);
   }
 }
-

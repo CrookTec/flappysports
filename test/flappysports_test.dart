@@ -18,25 +18,28 @@ void main() {
   //   }
   // });
 
-  ApiConnection api = ApiConnection('svi.live', 'api/v1/');
+  ApiConnection api = ApiConnection('localhost:5000', 'api/v1/');
 
   test('Get Schools', () async {
-    
     List<School> schools = await api.getSchools();
     for (School school in schools) {
       print(school.name);
     }
-
-    
   });
 
   test('Get Events', () async {
-
     List<Event> events = await api.getEvents(2023);
 
     for (Event event in events) {
       print(event.name);
     }
+  });
 
+  test('Get Conferences', () async {
+    List<Conference> conferences = await api.getConferences();
+
+    for (Conference conf in conferences) {
+      print(conf.name);
+    }
   });
 }
