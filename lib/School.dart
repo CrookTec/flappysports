@@ -38,10 +38,9 @@ class School {
         mascot: json['item']['school']['mascot'],
         activeFlag: json['item']['school']['active_flag'],
         partnerFlag: json['item']['school']['partner_flag'] ?? 0,
-        conference: json['item']['conference'] != null
-            ? json['item']['conference']
-                .map<Conference>((e) => Conference.fromMap(e))
-                .toList()[0] as Conference?
-            : null);
+        conference: json['item']['conference']
+            .map<Conference>((e) => Conference.fromMap(e))
+            .toList()
+            .first);
   }
 }

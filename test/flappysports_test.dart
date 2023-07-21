@@ -24,6 +24,7 @@ void main() {
     List<School> schools = await api.getSchools();
     for (School school in schools) {
       print(school.name);
+      print(school.conference?.name);
     }
   });
 
