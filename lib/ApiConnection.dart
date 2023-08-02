@@ -25,9 +25,14 @@ class ApiConnection {
     throw ClientException('Server Error');
   }
 
-  Future<List<Event>> getSchoolEvents(int year, String school) async {
+  Future<List<Event>> getSchoolEvents(int year, int school) async {
     final response = await get(Uri.https(
-        baseUrl, postfix + 'events/' + year.toString() + '/school/' + school));
+        baseUrl,
+        postfix +
+            'events/' +
+            year.toString() +
+            '/school/' +
+            school.toString()));
     if (response.statusCode == 200) {
       List<Event> events = (jsonDecode(response.body) as List)
           .map((e) => Event.fromJson(e))
