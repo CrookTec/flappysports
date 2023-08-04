@@ -60,8 +60,9 @@ class Event {
         schools: json['item']['schools']
             .map<School>((e) => School.fromMap(e))
             .toList() as List<School>,
-        videoStreams: json['item']['event_video'][0] != null
+        videoStreams: json['item']['event_video'] != null
             ? json['item']['event_video']
+                ?.where((e) => e != null)
                 .map<EventVideo>((e) => EventVideo.fromMap(e))
                 .toList() as List<EventVideo>
             : null);
