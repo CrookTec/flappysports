@@ -18,7 +18,7 @@ void main() {
   //   }
   // });
 
-  ApiConnection api = ApiConnection('localhost:5000', 'api/v1/');
+  ApiConnection api = ApiConnection('api.svi.live', 'api/v1/');
 
   test('Get Schools', () async {
     List<School> schools = await api.getSchools();
@@ -33,6 +33,7 @@ void main() {
 
     for (Event event in events) {
       print(event.name);
+      print(event.videoStreams);
     }
   });
 
