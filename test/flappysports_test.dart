@@ -34,6 +34,7 @@ void main() {
     for (Event event in events) {
       print(event.name);
       print(event.videoStreams);
+      print(event.audioStreams);
     }
   });
 

@@ -5,6 +5,7 @@ import 'package:flappysports/flappysports.dart';
 
 import 'School.dart';
 import 'EventVideo.dart';
+import 'EventAudio.dart';
 
 class Event {
   int eventId;
@@ -17,6 +18,7 @@ class Event {
   DateTime? endTimestamp;
   List<School>? schools;
   List<EventVideo>? videoStreams;
+  List<EventAudio>? audioStreams;
 
   Event({
     this.eventId = 0,
@@ -29,6 +31,7 @@ class Event {
     this.endTimestamp,
     this.schools,
     this.videoStreams,
+    this.audioStreams,
   });
 
   factory Event.fromMap(Map<String, dynamic> map) {
@@ -65,6 +68,12 @@ class Event {
                 ?.where((e) => e != null)
                 .map<EventVideo>((e) => EventVideo.fromMap(e))
                 .toList() as List<EventVideo>
+            : null,
+        audioStreams: json['item']['event_audio'] != null
+            ? json['item']['event_audio']
+                ?.where((e) => e != null)
+                .map<EventAudio>((e) => EventAudio.fromMap(e))
+                .toList() as List<EventAudio>
             : null);
   }
 }
