@@ -1,4 +1,5 @@
 import 'package:flappysports/ApiConnection.dart';
+import 'package:flappysports/Scoreboard.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:flappysports/Event.dart';
@@ -44,5 +45,11 @@ void main() {
     for (Conference conf in conferences) {
       print(conf.name);
     }
+  });
+
+  test('Get Scoreboard', () async {
+    Scoreboard scoreboard = await api.getScoreboard(32);
+    print(scoreboard.team1Score);
+    print(scoreboard.team2Score);
   });
 }

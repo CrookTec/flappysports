@@ -63,4 +63,17 @@ class ApiConnection {
     }
     throw ClientException('Server Error');
   }
+
+  Future<Scoreboard> getScoreboard(int eventId) async {
+    final response = await get(Uri.https(
+        baseUrl, postfix + 'event_logging/scoreboard/' + eventId.toString()));
+    if (response.statusCode == 200) {
+      Scoreboard scoreboard = (jsonDecode(response.body) as List)
+          .map((e) => Scoreboard.fromJson(e))
+          .toList()
+          .first;
+      return scoreboard;
+    }
+    throw ClientException('Server Error');
+  }
 }
